@@ -1,11 +1,11 @@
-# The Complete Guide to Downloading Vimeo Videos, Audio, and Media
+# The Complete Guide to Downloading Loom Videos, Audio, and Media
 
-A comprehensive resource for downloading Vimeo content including videos, audio tracks, transcripts, captions, and metadata across all formats and streaming protocols.
+A comprehensive resource for downloading Loom content including videos, audio tracks, transcripts, captions, and metadata across all formats and streaming protocols.
 
 ## Table of Contents
 
 - [Overview](#overview)
-- [Understanding Vimeo Media Types](#understanding-vimeo-media-types)
+- [Understanding Loom Media Types](#understanding-loom-media-types)
 - [File Formats and Extensions](#file-formats-and-extensions)
 - [Streaming Protocols and Properties](#streaming-protocols-and-properties)
 - [Download Methods and Tools](#download-methods-and-tools)
@@ -17,34 +17,34 @@ A comprehensive resource for downloading Vimeo content including videos, audio t
 
 ## Overview
 
-Vimeo is a premium video hosting platform that offers various media types and streaming formats. Unlike some platforms, Vimeo provides high-quality content in multiple formats, making it essential to understand the different media types, streaming protocols, and download techniques available.
+Loom is a video messaging and screen recording platform that offers various media types and streaming formats. Unlike traditional video hosting platforms, Loom specializes in quick screen recordings, webcam videos, and hybrid recordings for communication and collaboration, making it essential to understand the different media types, streaming protocols, and download techniques available.
 
-This guide covers everything from basic video downloads to extracting transcripts, audio tracks, and metadata from Vimeo content.
+This guide covers everything from basic video downloads to extracting transcripts, audio tracks, and metadata from Loom content.
 
-## Understanding Vimeo Media Types
+## Understanding Loom Media Types
 
 ### Video Content
 
-Vimeo hosts several types of video content:
+Loom hosts several types of video content:
 
-- **Progressive MP4**: Standard video files in various resolutions (240p to 4K+)
-- **Adaptive Streams**: HLS (HTTP Live Streaming) segments for quality adaptation
-- **Live Streams**: Real-time broadcasting content
-- **Premium Content**: DRM-protected videos requiring special handling
+- **Screen Recordings**: Desktop and application screen captures in various resolutions
+- **Webcam Recordings**: Camera-only recordings for personal messages
+- **Hybrid Recordings**: Combined screen and webcam recordings (picture-in-picture)
+- **Progressive MP4**: Standard video files optimized for web streaming
 
 ### Audio Content
 
-- **Embedded Audio**: Audio tracks within video files
-- **Separate Audio Tracks**: Standalone audio files (rare)
-- **Multiple Audio Languages**: Videos with multiple language tracks
-- **Audio-only Content**: Podcast-style content hosted on Vimeo
+- **Embedded Audio**: Audio tracks within video recordings (microphone, system audio)
+- **Separate Audio Tracks**: Extracted audio from screen recordings
+- **Multiple Audio Sources**: Combined microphone and system audio tracks
+- **Voice-over Content**: Commentary audio overlaid on screen recordings
 
 ### Text Content
 
-- **Closed Captions**: Accessibility captions in multiple formats
-- **Subtitles**: Translation subtitles in various languages
-- **Transcripts**: Full text transcriptions of video content
-- **Chapter Markers**: Timestamped content divisions
+- **Auto-generated Transcripts**: AI-generated text transcriptions of video content
+- **Captions**: Accessibility captions for screen recordings and presentations
+- **Chapter Markers**: Timestamped content divisions for longer recordings
+- **Comments and Annotations**: Text feedback and notes on specific timestamps
 
 ### Metadata
 
@@ -80,13 +80,13 @@ Vimeo hosts several types of video content:
 | **WebVTT** | `.vtt` | Web Video Text Tracks | Styling, positioning |
 | **SRT** | `.srt` | SubRip Text format | Basic timing and text |
 | **TTML** | `.ttml` | Timed Text Markup Language | Advanced formatting |
-| **JSON** | `.json` | Vimeo's custom caption format | Rich metadata |
+| **JSON** | `.json` | Loom's custom caption format | Rich metadata |
 
 ## Streaming Protocols and Properties
 
 ### HTTP Live Streaming (HLS)
 
-HLS is Vimeo's primary adaptive streaming protocol:
+HLS is Loom's primary adaptive streaming protocol:
 
 ```
 # Master playlist (.m3u8)
@@ -137,9 +137,9 @@ Dynamic quality adjustment based on:
 
 ### Method 2: Specialized Downloaders
 
-#### Using Vimeo Video Downloader
+#### Using Loom Video Downloader
 
-For a comprehensive solution, check out the [Vimeo Video Downloader](https://github.com/serpapps/vimeo-video-downloader) tool, which provides:
+For a comprehensive solution, check out the [Loom Video Downloader](https://github.com/serpapps/loom-video-downloader) tool, which provides:
 
 - **Multiple format support**: MP4, WebM, audio-only
 - **Quality selection**: From 240p to 4K
@@ -152,36 +152,36 @@ For a comprehensive solution, check out the [Vimeo Video Downloader](https://git
 **youtube-dl/yt-dlp:**
 ```bash
 # Basic video download
-yt-dlp "https://vimeo.com/VIDEO_ID"
+yt-dlp "https://www.loom.com/share/VIDEO_ID"
 
 # Specific quality
-yt-dlp -f "best[height<=720]" "https://vimeo.com/VIDEO_ID"
+yt-dlp -f "best[height<=720]" "https://www.loom.com/share/VIDEO_ID"
 
 # Audio only
-yt-dlp -f "bestaudio" "https://vimeo.com/VIDEO_ID"
+yt-dlp -f "bestaudio" "https://www.loom.com/share/VIDEO_ID"
 
 # With subtitles
-yt-dlp --write-subs --sub-lang en "https://vimeo.com/VIDEO_ID"
+yt-dlp --write-subs --sub-lang en "https://www.loom.com/share/VIDEO_ID"
 
 # All available formats
-yt-dlp -F "https://vimeo.com/VIDEO_ID"
+yt-dlp -F "https://www.loom.com/share/VIDEO_ID"
 ```
 
 **Gallery-dl for metadata:**
 ```bash
 # Download video with metadata
-gallery-dl "https://vimeo.com/VIDEO_ID"
+gallery-dl "https://www.loom.com/share/VIDEO_ID"
 
 # Extract metadata only
-gallery-dl -g "https://vimeo.com/VIDEO_ID"
+gallery-dl -g "https://www.loom.com/share/VIDEO_ID"
 ```
 
 ### Method 3: API-Based Solutions
 
 For developers, check out these implementation examples:
 
-- [Advanced Vimeo Downloader Script](https://gist.github.com/devinschumacher/8095f410a01494bc04ebf6c6440ce25d) - A comprehensive Python implementation
-- [Vimeo Media Extractor](https://gist.github.com/devinschumacher/a189434fc9f374965888ca2dc793953e) - Advanced extraction techniques
+- [Advanced Loom Downloader Script](https://gist.github.com/devinschumacher/8095f410a01494bc04ebf6c6440ce25d) - A comprehensive Python implementation
+- [Loom Media Extractor](https://gist.github.com/devinschumacher/a189434fc9f374965888ca2dc793953e) - Advanced extraction techniques
 
 ## Step-by-Step Download Guide
 
@@ -189,7 +189,7 @@ For developers, check out these implementation examples:
 
 1. **Identify the Video URL**
    ```
-   https://vimeo.com/123456789
+   https://www.loom.com/share/abcd1234567890
    ```
 
 2. **Choose Your Method**
@@ -200,7 +200,7 @@ For developers, check out these implementation examples:
 3. **Select Quality and Format**
    ```bash
    # List available formats
-   yt-dlp -F "https://vimeo.com/123456789"
+   yt-dlp -F "https://www.loom.com/share/abcd1234567890"
    
    # Sample output:
    # format code  extension  resolution note
@@ -212,10 +212,10 @@ For developers, check out these implementation examples:
 4. **Download with Preferred Settings**
    ```bash
    # Best quality MP4
-   yt-dlp -f "best[ext=mp4]" "https://vimeo.com/123456789"
+   yt-dlp -f "best[ext=mp4]" "https://www.loom.com/share/abcd1234567890"
    
    # Specific resolution
-   yt-dlp -f "299" "https://vimeo.com/123456789"
+   yt-dlp -f "299" "https://www.loom.com/share/abcd1234567890"
    ```
 
 ### Extracting Audio
@@ -223,7 +223,7 @@ For developers, check out these implementation examples:
 1. **Audio-Only Download**
    ```bash
    # Best audio quality
-   yt-dlp -f "bestaudio" -x --audio-format mp3 "https://vimeo.com/123456789"
+   yt-dlp -f "bestaudio" -x --audio-format mp3 "https://www.loom.com/share/abcd1234567890"
    ```
 
 2. **Extract from Video**
@@ -237,19 +237,19 @@ For developers, check out these implementation examples:
 1. **All Available Subtitles**
    ```bash
    # Download all subtitle languages
-   yt-dlp --write-subs --all-subs "https://vimeo.com/123456789"
+   yt-dlp --write-subs --all-subs "https://www.loom.com/share/abcd1234567890"
    ```
 
 2. **Specific Language**
    ```bash
    # English subtitles only
-   yt-dlp --write-subs --sub-lang en "https://vimeo.com/123456789"
+   yt-dlp --write-subs --sub-lang en "https://www.loom.com/share/abcd1234567890"
    ```
 
 3. **Auto-generated Captions**
    ```bash
    # Include auto-generated captions
-   yt-dlp --write-auto-subs "https://vimeo.com/123456789"
+   yt-dlp --write-auto-subs "https://www.loom.com/share/abcd1234567890"
    ```
 
 ### Batch Processing
@@ -263,59 +263,59 @@ For developers, check out these implementation examples:
 2. **Channel/User Videos**
    ```bash
    # Download all videos from a user
-   yt-dlp "https://vimeo.com/user/USERNAME/videos"
+   yt-dlp "https://www.loom.com/share/WORKSPACE_ID/videos"
    ```
 
 ## Advanced Techniques
 
 ### Handling Protected Content
 
-Some Vimeo videos have additional protection:
+Some Loom videos have additional protection:
 
 1. **Password-Protected Videos**
    ```bash
-   yt-dlp --video-password PASSWORD "https://vimeo.com/123456789"
+   yt-dlp --video-password PASSWORD "https://www.loom.com/share/abcd1234567890"
    ```
 
-2. **Private Videos** (requires authentication)
+2. **Workspace-Restricted Videos** (requires authentication)
    ```bash
-   yt-dlp --username USER --password PASS "https://vimeo.com/123456789"
+   yt-dlp --username USER --password PASS "https://www.loom.com/share/abcd1234567890"
    ```
 
 ### Custom Output Formatting
 
 ```bash
 # Custom filename template
-yt-dlp -o "%(uploader)s - %(title)s.%(ext)s" "https://vimeo.com/123456789"
+yt-dlp -o "%(uploader)s - %(title)s.%(ext)s" "https://www.loom.com/share/abcd1234567890"
 
 # Organize by date
-yt-dlp -o "%(upload_date)s/%(title)s.%(ext)s" "https://vimeo.com/123456789"
+yt-dlp -o "%(upload_date)s/%(title)s.%(ext)s" "https://www.loom.com/share/abcd1234567890"
 ```
 
 ### Quality Control
 
 ```bash
 # Maximum file size
-yt-dlp --max-filesize 500M "https://vimeo.com/123456789"
+yt-dlp --max-filesize 500M "https://www.loom.com/share/abcd1234567890"
 
 # Minimum resolution
-yt-dlp -f "best[height>=720]" "https://vimeo.com/123456789"
+yt-dlp -f "best[height>=720]" "https://www.loom.com/share/abcd1234567890"
 
 # Prefer specific codec
-yt-dlp -f "best[vcodec=h264]" "https://vimeo.com/123456789"
+yt-dlp -f "best[vcodec=h264]" "https://www.loom.com/share/abcd1234567890"
 ```
 
 ### Metadata Preservation
 
 ```bash
 # Embed metadata in file
-yt-dlp --embed-metadata --embed-thumbnail "https://vimeo.com/123456789"
+yt-dlp --embed-metadata --embed-thumbnail "https://www.loom.com/share/abcd1234567890"
 
 # Write info JSON
-yt-dlp --write-info-json "https://vimeo.com/123456789"
+yt-dlp --write-info-json "https://www.loom.com/share/abcd1234567890"
 
 # Write description
-yt-dlp --write-description "https://vimeo.com/123456789"
+yt-dlp --write-description "https://www.loom.com/share/abcd1234567890"
 ```
 
 ## Legal Considerations
@@ -327,12 +327,12 @@ yt-dlp --write-description "https://vimeo.com/123456789"
 - **Commercial Use**: Requires explicit permission from content creators
 - **Educational Use**: May qualify for fair use protections
 
-### Vimeo Terms of Service
+### Loom Terms of Service
 
-- Review Vimeo's current Terms of Service
-- Respect content creator preferences
+- Review Loom's current Terms of Service
+- Respect content creator preferences and workspace permissions
 - Follow platform guidelines for content usage
-- Consider purchasing official downloads when available
+- Consider requesting official access for organizational content
 
 ### Best Practices
 
@@ -348,19 +348,19 @@ yt-dlp --write-description "https://vimeo.com/123456789"
 **"Video not available" Errors:**
 ```bash
 # Try different user agent
-yt-dlp --user-agent "Mozilla/5.0..." "https://vimeo.com/123456789"
+yt-dlp --user-agent "Mozilla/5.0..." "https://www.loom.com/share/abcd1234567890"
 
 # Use different extractor options
-yt-dlp --extractor-args "vimeo:api_url=player.vimeo.com" "URL"
+yt-dlp --extractor-args "loom:api_url=www.loom.com" "URL"
 ```
 
 **Slow Download Speeds:**
 ```bash
 # Limit concurrent downloads
-yt-dlp --limit-rate 1M "https://vimeo.com/123456789"
+yt-dlp --limit-rate 1M "https://www.loom.com/share/abcd1234567890"
 
 # Use different threads
-yt-dlp --concurrent-fragments 4 "https://vimeo.com/123456789"
+yt-dlp --concurrent-fragments 4 "https://www.loom.com/share/abcd1234567890"
 ```
 
 **Audio/Video Sync Issues:**
@@ -385,7 +385,7 @@ ffmpeg -i video.mp4 -map 0:v:0 -map 0:a:1 output.mp4
 ### Essential Tools
 
 - **[yt-dlp](https://github.com/yt-dlp/yt-dlp)**: Most comprehensive downloader
-- **[Vimeo Video Downloader](https://github.com/serpapps/vimeo-video-downloader)**: Specialized Vimeo tool
+- **[Loom Video Downloader](https://github.com/serpapps/loom-video-downloader)**: Specialized Loom tool
 - **[FFmpeg](https://ffmpeg.org/)**: Video/audio processing
 - **[Gallery-dl](https://github.com/mikf/gallery-dl)**: Metadata extraction
 
