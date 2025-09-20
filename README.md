@@ -51,7 +51,7 @@ Loom hosts several types of video content:
 - **Video Information**: Title, description, duration, upload date
 - **Technical Specs**: Resolution, bitrate, codec information
 - **Thumbnail Images**: Preview images and video posters
-- **Creator Information**: Channel details and user metadata
+- **Creator Information**: Workspace details and user metadata
 
 ## File Formats and Extensions
 
@@ -260,9 +260,9 @@ For developers, check out these implementation examples:
    yt-dlp -a urls.txt
    ```
 
-2. **Channel/User Videos**
+2. **Workspace Videos**
    ```bash
-   # Download all videos from a user
+   # Download all videos from a workspace
    yt-dlp "https://www.loom.com/share/WORKSPACE_ID/videos"
    ```
 
