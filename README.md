@@ -1,345 +1,296 @@
-# The Complete Guide to Downloading Vimeo Videos, Audio, and Media
+# The Complete Guide to Downloading Loom Videos, Audio, and Media
 
-A comprehensive resource for downloading Vimeo content including videos, audio tracks, transcripts, captions, and metadata across all formats and streaming protocols.
+A comprehensive resource for downloading Loom screen recordings, video messages, and associated content including audio tracks, auto-generated transcripts, and metadata from the popular video communication platform.
 
 ## Table of Contents
 
 - [Overview](#overview)
-- [Understanding Vimeo Media Types](#understanding-vimeo-media-types)
-- [File Formats and Extensions](#file-formats-and-extensions)
-- [Streaming Protocols and Properties](#streaming-protocols-and-properties)
-- [Download Methods and Tools](#download-methods-and-tools)
+- [Understanding Loom's Platform](#understanding-looms-platform)
+- [Loom Video Formats and Quality](#loom-video-formats-and-quality)
+- [Download Methods](#download-methods)
 - [Step-by-Step Download Guide](#step-by-step-download-guide)
-- [Advanced Techniques](#advanced-techniques)
-- [Legal Considerations](#legal-considerations)
+- [Handling Loom Privacy Settings](#handling-loom-privacy-settings)
+- [Extracting Transcripts and Captions](#extracting-transcripts-and-captions)
+- [Batch Operations](#batch-operations)
+- [Legal and Ethical Considerations](#legal-and-ethical-considerations)
 - [Troubleshooting](#troubleshooting)
-- [Resources and Tools](#resources-and-tools)
+- [Tools and Resources](#tools-and-resources)
 
 ## Overview
 
-Vimeo is a premium video hosting platform that offers various media types and streaming formats. Unlike some platforms, Vimeo provides high-quality content in multiple formats, making it essential to understand the different media types, streaming protocols, and download techniques available.
+Loom is a cloud-based video communication platform that specializes in screen recording, webcam videos, and hybrid recordings combining both. Unlike traditional video hosting platforms, Loom is designed for asynchronous communication, enabling users to create quick video messages, tutorials, and presentations for work and educational purposes.
 
-This guide covers everything from basic video downloads to extracting transcripts, audio tracks, and metadata from Vimeo content.
+Loom videos are typically accessible through unique share URLs and are optimized for web playback with automatic transcription capabilities. This guide covers the technical aspects of downloading Loom content while respecting platform policies and creator rights.
 
-## Understanding Vimeo Media Types
+## Understanding Loom's Platform
 
-### Video Content
+### Video Content Types
 
-Vimeo hosts several types of video content:
+Loom supports three primary recording modes:
 
-- **Progressive MP4**: Standard video files in various resolutions (240p to 4K+)
-- **Adaptive Streams**: HLS (HTTP Live Streaming) segments for quality adaptation
-- **Live Streams**: Real-time broadcasting content
-- **Premium Content**: DRM-protected videos requiring special handling
+- **Screen Only**: Captures desktop or application windows with system audio
+- **Camera Only**: Records webcam feed for personal video messages  
+- **Screen + Camera**: Combines screen recording with webcam overlay (picture-in-picture)
 
-### Audio Content
+### Loom URL Structure
 
-- **Embedded Audio**: Audio tracks within video files
-- **Separate Audio Tracks**: Standalone audio files (rare)
-- **Multiple Audio Languages**: Videos with multiple language tracks
-- **Audio-only Content**: Podcast-style content hosted on Vimeo
-
-### Text Content
-
-- **Closed Captions**: Accessibility captions in multiple formats
-- **Subtitles**: Translation subtitles in various languages
-- **Transcripts**: Full text transcriptions of video content
-- **Chapter Markers**: Timestamped content divisions
-
-### Metadata
-
-- **Video Information**: Title, description, duration, upload date
-- **Technical Specs**: Resolution, bitrate, codec information
-- **Thumbnail Images**: Preview images and video posters
-- **Creator Information**: Channel details and user metadata
-
-## File Formats and Extensions
-
-### Video Formats
-
-| Format | Extension | Description | Quality Range |
-|--------|-----------|-------------|---------------|
-| **MP4 (H.264/AVC)** | `.mp4` | Most common progressive format | 240p - 4K |
-| **MP4 (H.265/HEVC)** | `.mp4` | Modern high-efficiency codec | 720p - 8K |
-| **WebM (VP9)** | `.webm` | Open-source format, web-optimized | 360p - 4K |
-| **HLS Segments** | `.m3u8`, `.ts` | Adaptive streaming segments | Variable |
-| **DASH** | `.mpd` | Dynamic Adaptive Streaming | Variable |
-
-### Audio Formats
-
-| Format | Extension | Description | Bitrate Range |
-|--------|-----------|-------------|---------------|
-| **AAC** | `.aac`, `.m4a` | Advanced Audio Coding | 128-320 kbps |
-| **MP3** | `.mp3` | MPEG Audio Layer III | 128-320 kbps |
-| **Opus** | `.opus` | Modern audio codec | 64-512 kbps |
-
-### Subtitle/Caption Formats
-
-| Format | Extension | Description | Features |
-|--------|-----------|-------------|----------|
-| **WebVTT** | `.vtt` | Web Video Text Tracks | Styling, positioning |
-| **SRT** | `.srt` | SubRip Text format | Basic timing and text |
-| **TTML** | `.ttml` | Timed Text Markup Language | Advanced formatting |
-| **JSON** | `.json` | Vimeo's custom caption format | Rich metadata |
-
-## Streaming Protocols and Properties
-
-### HTTP Live Streaming (HLS)
-
-HLS is Vimeo's primary adaptive streaming protocol:
-
+Loom videos use a consistent URL pattern:
 ```
-# Master playlist (.m3u8)
-#EXTM3U
-#EXT-X-STREAM-INF:BANDWIDTH=800000,RESOLUTION=640x360
-360p.m3u8
-#EXT-X-STREAM-INF:BANDWIDTH=1400000,RESOLUTION=842x480
-480p.m3u8
-#EXT-X-STREAM-INF:BANDWIDTH=2800000,RESOLUTION=1280x720
-720p.m3u8
+https://www.loom.com/share/[VIDEO_ID]
 ```
 
-**Key Properties:**
-- **Bandwidth**: Bitrate requirements for each quality level
-- **Resolution**: Video dimensions (width x height)
-- **Codecs**: Video and audio codec specifications
-- **Segment Duration**: Typical 6-10 second chunks
+Where `[VIDEO_ID]` is a unique identifier typically 32 characters long (e.g., `a1b2c3d4e5f6789012345678901234567890abcd`).
 
-### Progressive Download
+### Privacy Levels
 
-Direct MP4 downloads with these properties:
-- **Single bitrate**: Fixed quality level
-- **Immediate playback**: No buffering required
-- **Full file download**: Complete file transfer
-- **Quality selection**: Manual quality choice
+Loom videos can have different privacy settings:
 
-### Adaptive Bitrate (ABR)
+- **Public**: Accessible to anyone with the link
+- **Workspace Only**: Limited to members of the creator's workspace
+- **Password Protected**: Requires a password to access
+- **Restricted**: Only specific invited users can view
 
-Dynamic quality adjustment based on:
-- **Network conditions**: Bandwidth availability
-- **Device capabilities**: Processing power and display
-- **Buffer health**: Playback smoothness optimization
+### Technical Architecture
 
-## Download Methods and Tools
+Loom uses a cloud-based infrastructure with:
+- **CDN Distribution**: Videos are distributed via Content Delivery Network
+- **Adaptive Streaming**: Quality adjusts based on viewer's connection
+- **Progressive Download**: Supports both streaming and download
+- **Automatic Transcription**: AI-generated captions and transcripts
 
-### Method 1: Browser Developer Tools
+## Loom Video Formats and Quality
 
-**Steps:**
-1. Open video in browser
-2. Press F12 to open Developer Tools
-3. Go to Network tab
-4. Refresh page and play video
-5. Filter by "Media" or search for `.mp4`, `.m3u8`
-6. Right-click desired file → "Save as"
+### Supported Formats
 
-**Pros:** No additional software required
-**Cons:** Manual process, limited format options
+Loom primarily uses:
 
-### Method 2: Specialized Downloaders
+| Format | Container | Video Codec | Audio Codec | Typical Use |
+|--------|-----------|-------------|-------------|-------------|
+| **MP4** | `.mp4` | H.264 (AVC) | AAC | Standard quality recordings |
+| **WebM** | `.webm` | VP9 | Opus | Web-optimized playback |
 
-#### Using Vimeo Video Downloader
+### Quality Levels
 
-For a comprehensive solution, check out the [Vimeo Video Downloader](https://github.com/serpapps/vimeo-video-downloader) tool, which provides:
+Loom automatically optimizes video quality based on content type:
 
-- **Multiple format support**: MP4, WebM, audio-only
-- **Quality selection**: From 240p to 4K
-- **Batch downloading**: Multiple videos at once
-- **Metadata extraction**: Titles, descriptions, thumbnails
-- **Subtitle download**: All available caption formats
+| Recording Type | Max Resolution | Typical Bitrate | Frame Rate |
+|----------------|---------------|----------------|------------|
+| **Screen Only** | 1080p (1920×1080) | 1-3 Mbps | 30 fps |
+| **Camera Only** | 720p (1280×720) | 0.5-2 Mbps | 30 fps |
+| **Screen + Camera** | 1080p (screen) + 360p (camera) | 1.5-4 Mbps | 30 fps |
 
-#### Command Line Tools
+### Audio Specifications
 
-**youtube-dl/yt-dlp:**
+- **Sample Rate**: 48 kHz
+- **Bit Depth**: 16-bit
+- **Channels**: Stereo (2 channels)
+- **Audio Sources**: Microphone and/or system audio
+- **Compression**: AAC at 128-256 kbps
+
+### Automatic Transcription
+
+Loom provides:
+- **Real-time transcription** during recording
+- **Searchable timestamps** for navigation
+- **Editable transcripts** post-recording
+- **Export options** in SRT and TXT formats
+
+## Download Methods
+
+### Method 1: Using yt-dlp (Recommended)
+
+[yt-dlp](https://github.com/yt-dlp/yt-dlp) is the most reliable tool for downloading Loom videos:
+
 ```bash
-# Basic video download
-yt-dlp "https://vimeo.com/VIDEO_ID"
+# Install yt-dlp
+pip install yt-dlp
 
-# Specific quality
-yt-dlp -f "best[height<=720]" "https://vimeo.com/VIDEO_ID"
+# Basic download
+yt-dlp "https://www.loom.com/share/VIDEO_ID"
 
-# Audio only
-yt-dlp -f "bestaudio" "https://vimeo.com/VIDEO_ID"
+# Download with specific quality
+yt-dlp -f "best[height<=720]" "https://www.loom.com/share/VIDEO_ID"
 
-# With subtitles
-yt-dlp --write-subs --sub-lang en "https://vimeo.com/VIDEO_ID"
+# Audio-only extraction
+yt-dlp -f "bestaudio" --extract-audio --audio-format mp3 "https://www.loom.com/share/VIDEO_ID"
 
-# All available formats
-yt-dlp -F "https://vimeo.com/VIDEO_ID"
+# Include auto-generated subtitles
+yt-dlp --write-auto-subs --sub-lang en "https://www.loom.com/share/VIDEO_ID"
 ```
 
-**Gallery-dl for metadata:**
-```bash
-# Download video with metadata
-gallery-dl "https://vimeo.com/VIDEO_ID"
+### Method 2: Browser Developer Tools
 
-# Extract metadata only
-gallery-dl -g "https://vimeo.com/VIDEO_ID"
-```
+For manual extraction:
 
-### Method 3: API-Based Solutions
+1. Open the Loom video in your browser
+2. Open Developer Tools (F12)
+3. Navigate to the Network tab
+4. Refresh the page and play the video
+5. Filter for media files (MP4, WebM)
+6. Right-click the video file → Save As
 
-For developers, check out these implementation examples:
+### Method 3: Browser Extensions
 
-- [Advanced Vimeo Downloader Script](https://gist.github.com/devinschumacher/8095f410a01494bc04ebf6c6440ce25d) - A comprehensive Python implementation
-- [Vimeo Media Extractor](https://gist.github.com/devinschumacher/a189434fc9f374965888ca2dc793953e) - Advanced extraction techniques
+**Video Downloader Professional** (Chrome/Firefox):
+- Automatically detects Loom videos
+- One-click download functionality
+- Multiple quality options
+
+**JDownloader** (Desktop application):
+- Paste Loom URLs for automatic detection
+- Batch downloading capabilities
+- Advanced configuration options
 
 ## Step-by-Step Download Guide
 
-### Downloading Video Files
+### Basic Download Process
 
-1. **Identify the Video URL**
+1. **Obtain the Loom Video URL**
    ```
-   https://vimeo.com/123456789
+   Example: https://www.loom.com/share/abcd1234567890
    ```
 
-2. **Choose Your Method**
-   - Browser tools (simple)
-   - yt-dlp (comprehensive)
-   - Specialized tools (user-friendly)
+2. **Check Video Accessibility**
+   - Verify you can view the video in your browser
+   - Note if it requires login or password
 
-3. **Select Quality and Format**
+3. **Choose Download Method**
    ```bash
-   # List available formats
-   yt-dlp -F "https://vimeo.com/123456789"
-   
-   # Sample output:
-   # format code  extension  resolution note
-   # 140          m4a        audio only DASH audio
-   # 298          mp4        720p       DASH video
-   # 299          mp4        1080p      DASH video
+   # List available formats first
+   yt-dlp -F "https://www.loom.com/share/abcd1234567890"
    ```
 
 4. **Download with Preferred Settings**
    ```bash
    # Best quality MP4
-   yt-dlp -f "best[ext=mp4]" "https://vimeo.com/123456789"
+   yt-dlp -f "best[ext=mp4]" "https://www.loom.com/share/abcd1234567890"
    
-   # Specific resolution
-   yt-dlp -f "299" "https://vimeo.com/123456789"
+   # Specific resolution (if available)
+   yt-dlp -f "best[height<=720]" "https://www.loom.com/share/abcd1234567890"
+   
+   # Include transcripts
+   yt-dlp --write-auto-subs "https://www.loom.com/share/abcd1234567890"
    ```
 
-### Extracting Audio
-
-1. **Audio-Only Download**
-   ```bash
-   # Best audio quality
-   yt-dlp -f "bestaudio" -x --audio-format mp3 "https://vimeo.com/123456789"
-   ```
-
-2. **Extract from Video**
-   ```bash
-   # Convert existing video to audio
-   ffmpeg -i video.mp4 -vn -acodec copy audio.aac
-   ```
-
-### Downloading Subtitles and Transcripts
-
-1. **All Available Subtitles**
-   ```bash
-   # Download all subtitle languages
-   yt-dlp --write-subs --all-subs "https://vimeo.com/123456789"
-   ```
-
-2. **Specific Language**
-   ```bash
-   # English subtitles only
-   yt-dlp --write-subs --sub-lang en "https://vimeo.com/123456789"
-   ```
-
-3. **Auto-generated Captions**
-   ```bash
-   # Include auto-generated captions
-   yt-dlp --write-auto-subs "https://vimeo.com/123456789"
-   ```
-
-### Batch Processing
-
-1. **Multiple Videos from List**
-   ```bash
-   # Create a file with URLs (urls.txt)
-   yt-dlp -a urls.txt
-   ```
-
-2. **Channel/User Videos**
-   ```bash
-   # Download all videos from a user
-   yt-dlp "https://vimeo.com/user/USERNAME/videos"
-   ```
-
-## Advanced Techniques
-
-### Handling Protected Content
-
-Some Vimeo videos have additional protection:
-
-1. **Password-Protected Videos**
-   ```bash
-   yt-dlp --video-password PASSWORD "https://vimeo.com/123456789"
-   ```
-
-2. **Private Videos** (requires authentication)
-   ```bash
-   yt-dlp --username USER --password PASS "https://vimeo.com/123456789"
-   ```
-
-### Custom Output Formatting
+### Advanced Download Options
 
 ```bash
-# Custom filename template
-yt-dlp -o "%(uploader)s - %(title)s.%(ext)s" "https://vimeo.com/123456789"
+# Custom filename with metadata
+yt-dlp -o "%(uploader)s - %(title)s - %(upload_date)s.%(ext)s" "https://www.loom.com/share/VIDEO_ID"
 
-# Organize by date
-yt-dlp -o "%(upload_date)s/%(title)s.%(ext)s" "https://vimeo.com/123456789"
+# Audio extraction with conversion
+yt-dlp -f "bestaudio" -x --audio-format mp3 "https://www.loom.com/share/VIDEO_ID"
+
+# Download with thumbnail and metadata
+yt-dlp --embed-thumbnail --embed-metadata "https://www.loom.com/share/VIDEO_ID"
 ```
 
-### Quality Control
+## Handling Loom Privacy Settings
+
+### Public Videos
+
+Public Loom videos can be downloaded directly:
+```bash
+yt-dlp "https://www.loom.com/share/VIDEO_ID"
+```
+
+### Password-Protected Videos
+
+For password-protected content:
+```bash
+# Note: This requires the video password
+yt-dlp --video-password PASSWORD "https://www.loom.com/share/VIDEO_ID"
+```
+
+### Workspace-Restricted Videos
+
+Videos restricted to workspace members require authentication:
+```bash
+# Login credentials required
+yt-dlp --username EMAIL --password PASSWORD "https://www.loom.com/share/VIDEO_ID"
+```
+
+**Important**: Ensure you have proper access permissions before attempting to download workspace-restricted content.
+
+## Extracting Transcripts and Captions
+
+### Auto-Generated Transcripts
+
+Loom provides automatic transcriptions:
+```bash
+# Download video with auto-generated subtitles
+yt-dlp --write-auto-subs "https://www.loom.com/share/VIDEO_ID"
+
+# Specific language (if available)
+yt-dlp --write-auto-subs --sub-lang en "https://www.loom.com/share/VIDEO_ID"
+
+# All available subtitle languages
+yt-dlp --write-auto-subs --all-subs "https://www.loom.com/share/VIDEO_ID"
+```
+
+### Manual Transcript Access
+
+1. **Via Loom Interface**:
+   - Open the video in Loom
+   - Click the transcript panel
+   - Copy or export as needed
+
+2. **Via API** (for developers):
+   ```python
+   # Theoretical example - actual API access may vary
+   import requests
+   
+   response = requests.get(f"https://www.loom.com/api/videos/{VIDEO_ID}/transcript")
+   transcript_data = response.json()
+   ```
+
+## Batch Operations
+
+### Multiple Video Downloads
+
+Download multiple Loom videos at once:
 
 ```bash
-# Maximum file size
-yt-dlp --max-filesize 500M "https://vimeo.com/123456789"
+# From URL list file
+echo "https://www.loom.com/share/video1id" >> loom_urls.txt
+echo "https://www.loom.com/share/video2id" >> loom_urls.txt
+yt-dlp -a loom_urls.txt
 
-# Minimum resolution
-yt-dlp -f "best[height>=720]" "https://vimeo.com/123456789"
-
-# Prefer specific codec
-yt-dlp -f "best[vcodec=h264]" "https://vimeo.com/123456789"
+# With custom naming
+yt-dlp -a loom_urls.txt -o "Loom_%(uploader)s_%(title)s.%(ext)s"
 ```
 
-### Metadata Preservation
+### Workspace Video Collection
+
+**Note**: Bulk workspace downloading may require special permissions and should respect workplace policies.
 
 ```bash
-# Embed metadata in file
-yt-dlp --embed-metadata --embed-thumbnail "https://vimeo.com/123456789"
-
-# Write info JSON
-yt-dlp --write-info-json "https://vimeo.com/123456789"
-
-# Write description
-yt-dlp --write-description "https://vimeo.com/123456789"
+# Theoretical workspace URL pattern (may not work in practice)
+yt-dlp "https://www.loom.com/workspace/WORKSPACE_ID/videos"
 ```
 
-## Legal Considerations
+## Legal and Ethical Considerations
 
-### Copyright and Fair Use
+### Loom Terms of Service
 
-- **Respect Creator Rights**: Only download content you have permission to use
-- **Personal Use**: Downloads for personal viewing are generally acceptable
-- **Commercial Use**: Requires explicit permission from content creators
-- **Educational Use**: May qualify for fair use protections
-
-### Vimeo Terms of Service
-
-- Review Vimeo's current Terms of Service
-- Respect content creator preferences
-- Follow platform guidelines for content usage
-- Consider purchasing official downloads when available
+- **Review Current ToS**: Always check [Loom's Terms of Service](https://www.loom.com/terms)
+- **Respect Privacy Settings**: Only download videos you have permission to access
+- **Workplace Policies**: Follow your organization's data handling guidelines
+- **Creator Rights**: Respect the original creator's intent and permissions
 
 ### Best Practices
 
-1. **Check Permissions**: Verify download rights before downloading
-2. **Respect Creators**: Support creators through official channels
-3. **Attribution**: Credit creators when using downloaded content
-4. **Storage**: Keep downloads private and secure
+1. **Obtain Permission**: Get explicit consent before downloading others' content
+2. **Private Use**: Keep downloaded content secure and private
+3. **Attribution**: Credit creators when sharing or referencing content
+4. **Data Security**: Store downloads securely, especially workplace content
+5. **Retention Policies**: Follow organizational data retention guidelines
+
+### Legal Compliance
+
+- **Copyright Respect**: Loom videos may contain copyrighted material
+- **Privacy Laws**: Consider GDPR, CCPA, and other privacy regulations
+- **Workplace Compliance**: Adhere to company IT and security policies
 
 ## Troubleshooting
 
@@ -347,87 +298,84 @@ yt-dlp --write-description "https://vimeo.com/123456789"
 
 **"Video not available" Errors:**
 ```bash
-# Try different user agent
-yt-dlp --user-agent "Mozilla/5.0..." "https://vimeo.com/123456789"
-
-# Use different extractor options
-yt-dlp --extractor-args "vimeo:api_url=player.vimeo.com" "URL"
+# Try with different user agent
+yt-dlp --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" "https://www.loom.com/share/VIDEO_ID"
 ```
 
-**Slow Download Speeds:**
+**Authentication Failures:**
 ```bash
-# Limit concurrent downloads
-yt-dlp --limit-rate 1M "https://vimeo.com/123456789"
+# Clear cache and cookies
+yt-dlp --rm-cache-dir "https://www.loom.com/share/VIDEO_ID"
 
-# Use different threads
-yt-dlp --concurrent-fragments 4 "https://vimeo.com/123456789"
+# Use specific extractor
+yt-dlp --extractor-args "loom:check_formats=false" "https://www.loom.com/share/VIDEO_ID"
 ```
 
-**Audio/Video Sync Issues:**
+**Quality Issues:**
 ```bash
-# Re-encode with ffmpeg
-ffmpeg -i input.mp4 -c:v copy -c:a aac -strict experimental output.mp4
+# Force specific format
+yt-dlp -f "mp4" "https://www.loom.com/share/VIDEO_ID"
+
+# List all available formats first
+yt-dlp -F "https://www.loom.com/share/VIDEO_ID"
 ```
 
-### Format Compatibility
-
-**Converting Between Formats:**
+**Network Problems:**
 ```bash
-# MP4 to WebM
-ffmpeg -i video.mp4 -c:v libvpx-vp9 -c:a libopus video.webm
+# Limit download speed
+yt-dlp --limit-rate 1M "https://www.loom.com/share/VIDEO_ID"
 
-# Extract specific stream
-ffmpeg -i video.mp4 -map 0:v:0 -map 0:a:1 output.mp4
+# Retry with delays
+yt-dlp --retries 10 --retry-sleep 5 "https://www.loom.com/share/VIDEO_ID"
 ```
 
-## Resources and Tools
+### Platform-Specific Solutions
+
+- **Workplace Restrictions**: Some corporate networks may block video downloads
+- **Browser Sync**: Ensure browser is logged into Loom if accessing workspace content
+- **Regional Blocks**: Consider VPN if videos are geographically restricted
+- **Rate Limiting**: Loom may throttle excessive requests
+
+## Tools and Resources
 
 ### Essential Tools
 
-- **[yt-dlp](https://github.com/yt-dlp/yt-dlp)**: Most comprehensive downloader
-- **[Vimeo Video Downloader](https://github.com/serpapps/vimeo-video-downloader)**: Specialized Vimeo tool
-- **[FFmpeg](https://ffmpeg.org/)**: Video/audio processing
-- **[Gallery-dl](https://github.com/mikf/gallery-dl)**: Metadata extraction
-
-### Useful Scripts and Examples
-
-- **[Advanced Downloader Implementation](https://gist.github.com/devinschumacher/8095f410a01494bc04ebf6c6440ce25d)**: Complete Python solution
-- **[Media Extraction Techniques](https://gist.github.com/devinschumacher/a189434fc9f374965888ca2dc793953e)**: Advanced extraction methods
+- **[yt-dlp](https://github.com/yt-dlp/yt-dlp)**: Primary download tool with Loom support
+- **[FFmpeg](https://ffmpeg.org/)**: Video/audio processing and conversion
+- **[JDownloader](https://jdownloader.org/)**: GUI-based download manager
 
 ### Browser Extensions
 
-- **Video DownloadHelper**: Firefox/Chrome extension
-- **Flash Video Downloader**: Chrome extension
-- **SaveFrom.net Helper**: Multi-browser support
+- **Video Downloader Professional**: Multi-platform browser extension
+- **Video DownloadHelper**: Firefox/Chrome extension with Loom support
+- **Flash Video Downloader**: Alternative Chrome extension
 
-### Mobile Solutions
+### Development Resources
 
-- **Documents by Readdle** (iOS): Built-in download manager
-- **ADM** (Android): Advanced Download Manager
-- **NewPipe** (Android): Open-source video downloader
+For developers building custom solutions:
 
-## Quality Reference
+```python
+# Example using yt-dlp Python library
+import yt_dlp
 
-### Resolution Standards
+ydl_opts = {
+    'format': 'best[ext=mp4]',
+    'writesubtitles': True,
+    'writeautomaticsub': True,
+}
 
-| Quality | Resolution | Aspect Ratio | Typical Bitrate |
-|---------|------------|--------------|----------------|
-| 240p | 426×240 | 16:9 | 400-600 kbps |
-| 360p | 640×360 | 16:9 | 600-1000 kbps |
-| 480p | 854×480 | 16:9 | 1000-1500 kbps |
-| 720p HD | 1280×720 | 16:9 | 1500-3000 kbps |
-| 1080p FHD | 1920×1080 | 16:9 | 3000-6000 kbps |
-| 1440p QHD | 2560×1440 | 16:9 | 6000-12000 kbps |
-| 2160p 4K | 3840×2160 | 16:9 | 12000-25000 kbps |
+with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+    ydl.download(['https://www.loom.com/share/VIDEO_ID'])
+```
 
-### Audio Quality Standards
+### Quality Reference
 
-| Quality | Bitrate | Sample Rate | Channels |
-|---------|---------|-------------|----------|
-| Low | 64-96 kbps | 44.1 kHz | Stereo |
-| Medium | 128 kbps | 44.1 kHz | Stereo |
-| High | 192-256 kbps | 44.1/48 kHz | Stereo |
-| Premium | 320+ kbps | 48+ kHz | Stereo/5.1 |
+| Recording Type | Typical Quality | File Size (per minute) |
+|----------------|-----------------|----------------------|
+| Screen Only (720p) | 1.5 Mbps | ~11 MB |
+| Screen Only (1080p) | 2.5 Mbps | ~19 MB |
+| Camera Only (720p) | 1 Mbps | ~8 MB |
+| Screen + Camera | 3 Mbps | ~23 MB |
 
 ---
 
@@ -437,4 +385,11 @@ This guide is continuously updated with new methods, tools, and best practices. 
 
 ## Disclaimer
 
-This guide is for educational purposes. Users are responsible for complying with applicable laws, terms of service, and respecting content creators' rights. Always ensure you have proper permissions before downloading copyrighted content.
+This guide is for educational and legitimate use purposes. Users are responsible for:
+
+- Complying with Loom's Terms of Service
+- Respecting content creators' rights and privacy
+- Following workplace policies and legal requirements
+- Ensuring proper permissions before downloading content
+
+Always use these tools responsibly and ethically.
