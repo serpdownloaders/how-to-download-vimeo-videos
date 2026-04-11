@@ -1,6 +1,22 @@
-# The Complete Guide to Downloading Vimeo Videos, Audio, and Media
+# How to Download Vimeo Videos | The Complete Guide + Free Tool
 
-A comprehensive resource for downloading Vimeo content including videos, audio tracks, transcripts, captions, and metadata across all formats and streaming protocols.
+The Video Downloader for Vimeo is a browser extension built specifically for saving Vimeo videos as standard files you can keep — no re-encoding, no watermarks, and no unnecessary tracking.
+
+- Save Vimeo videos in their original quality for offline viewing — lectures, tutorials, portfolios, or anything else you need access to
+- Download public, embedded, and private (authenticated) Vimeo videos from 240p up to 4K UHD
+- Skip unreliable online converters and shady download sites — this extension works right inside your browser with one-click downloads
+- Privacy-first design with minimal permissions, no analytics, no telemetry, and no data sharing
+
+![Vimeo Video Downloader extension](https://github.com/user-attachments/assets/884674e0-dfcb-4dc1-a0d3-fa29df51d55e)
+
+Unlike generic tools that fail on Vimeo's streaming format, this extension auto-detects videos on any Vimeo page and provides a clean, one-click download experience.
+
+## watch the video 👇
+
+<a href="https://www.youtube.com/watch?v=jKf8VqvLGqQ" target="_blank">
+<img src="https://raw.githubusercontent.com/devinschumacher/uploads/refs/heads/main/images/download-vimeo-videos-private-or-public-with-browser-extension-chrome-firefox-edge-opera.jpg" width="700px">
+</a>
+
 
 ## Table of Contents
 
@@ -14,6 +30,14 @@ A comprehensive resource for downloading Vimeo content including videos, audio t
 - [Legal Considerations](#legal-considerations)
 - [Troubleshooting](#troubleshooting)
 - [Resources and Tools](#resources-and-tools)
+
+> [NOTICE]
+> Additional Reading:
+
+- [How to Download Vimeo Videos for FREE (No Extensions Needed)](https://gist.github.com/devinschumacher/a189434fc9f374965888ca2dc793953e)
+- [How to download Vimeo Videos (streaming via HLS / streamlink)](https://gist.github.com/devinschumacher/8024bc4693d79aef641b2c281e45d6cb)
+- [How to Download Password Protected Vimeo Videos](https://gist.github.com/devinschumacher/d28b419be2b349b9730dee1137b292da)
+
 
 ## Overview
 
