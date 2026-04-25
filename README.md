@@ -13,7 +13,7 @@ Unlike generic tools that fail on Vimeo's streaming format, this extension auto-
 
 ## watch the video 👇
 
-<a href="https://www.youtube.com/watch?v=jKf8VqvLGqQ" target="_blank">
+<a href="https://www.youtube.com/watch?v=NV_g1ijqxLA" target="_blank">
 <img src="https://raw.githubusercontent.com/devinschumacher/uploads/refs/heads/main/images/download-vimeo-videos-private-or-public-with-browser-extension-chrome-firefox-edge-opera.jpg" width="700px">
 </a>
 
